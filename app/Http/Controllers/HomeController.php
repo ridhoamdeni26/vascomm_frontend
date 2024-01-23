@@ -17,8 +17,13 @@ class HomeController extends Controller
         return view('frontend.login');
     }
 
-    public function dashboard() {
-        $apiEndpoint = env('BACKEND_API') . '/users/login-admin';
+    public function dashboard(Request $request) {
+        $apiEndpoint = env('BACKEND_API') . '/users/get-user';
+        $token = $request->session()->get('user.token');
+
+        $getParamsUser = [
+            'param1' => 'value1',
+        ];
 
         $response = Http::post($apiEndpoint, [
             'email' => $request->email,

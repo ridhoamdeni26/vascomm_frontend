@@ -56,7 +56,7 @@
             <div class="flex items-center">
                 <a href="{{ route('login') }}" class="mr-2 bg-white border border-blue-500 text-blue-500 py-2 px-2 rounded-md">Masuk</a>
                 <div class="mr-2"></div>
-                <button class="bg-blue-500 text-white py-2 px-2 rounded-md">Daftar</button>
+                <a href="{{ route('register') }}" class="bg-blue-500 text-white py-2 px-2 rounded-md">Daftar</a>
             </div>
         </div>
     </header>
@@ -93,27 +93,22 @@
     <div class="container mx-auto mt-8 mb-12">
         <button class="prevBtn">&lt;</button>
         <div class="owl-carousel grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            <!-- Produk 1 -->
+
+            @if (isset($product['code']) && $product['code'] == 200 && isset($product['data']['result']))
+            @foreach ($product['data']['result'] as $productcarousel)
             <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
                 <img src="assets/imgs/product1.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
                 <div class="text-left mb-2">
-                    <div class="text-black font-semibold">Euodia</div>
+                    <div class="text-black font-semibold">{{ $productcarousel['name'] }}</div>
                 </div>
                 <div class="text-left">
-                    <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
+                    <div class="text-gray-500">Rp <span class="text-blue-500">{{ $productcarousel['price'] }}</span></div>
                 </div>
             </div>
-
-            <!-- Produk 2 -->
-            <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
-                <img src="assets/imgs/product2.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
-                <div class="text-left mb-2">
-                    <div class="text-black font-semibold">Euodia</div>
-                </div>
-                <div class="text-left">
-                    <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
-                </div>
-            </div>
+            @endforeach
+            @else
+            <p class="text-gray-500">No products available</p>
+            @endif
         </div>
         <button class="nextBtn">&gt;</button>
     </div>
@@ -125,75 +120,21 @@
 
     <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
 
+        @if (isset($product['code']) && $product['code'] == 200 && isset($product['data']['result']))
+        @foreach ($product['data']['result'] as $product)
         <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
             <img src="assets/imgs/product1.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
             <div class="text-left mb-2">
-                <div class="text-black font-semibold">Euodia</div>
+                <div class="text-black font-semibold">{{ $product['name'] }}</div>
             </div>
             <div class="text-left">
-                <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
+                <div class="text-gray-500">Rp <span class="text-blue-500">{{ $product['price'] }}</span></div>
             </div>
         </div>
-
-        <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
-            <img src="assets/imgs/product2.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
-            <div class="text-left mb-2">
-                <div class="text-black font-semibold">Euodia</div>
-            </div>
-            <div class="text-left">
-                <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2 mb-4">
-            <img src="assets/imgs/product2.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
-            <div class="text-left mb-2">
-                <div class="text-black font-semibold">Euodia</div>
-            </div>
-            <div class="text-left">
-                <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
-            <img src="assets/imgs/product2.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
-            <div class="text-left mb-2">
-                <div class="text-black font-semibold">Euodia</div>
-            </div>
-            <div class="text-left">
-                <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
-            <img src="assets/imgs/product2.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
-            <div class="text-left mb-2">
-                <div class="text-black font-semibold">Euodia</div>
-            </div>
-            <div class="text-left">
-                <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
-            <img src="assets/imgs/product2.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
-            <div class="text-left mb-2">
-                <div class="text-black font-semibold">Euodia</div>
-            </div>
-            <div class="text-left">
-                <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
-            </div>
-        </div>
-
-        <div class="bg-white p-4 rounded-md shadow-md text-center transition-transform transform hover:shadow-lg hover:scale-105 m-2 mx-2">
-            <img src="assets/imgs/product2.png" class="w-full h-40 object-contain mb-4" alt="Product Image">
-            <div class="text-left mb-2">
-                <div class="text-black font-semibold">Euodia</div>
-            </div>
-            <div class="text-left">
-                <div class="text-gray-500">Rp <span class="text-blue-500">100.000</span></div>
-            </div>
-        </div>
+        @endforeach
+        @else
+        <p class="text-gray-500">No products available</p>
+        @endif
     </div>
 
     <div class="container mx-auto mt-8 mb-8 text-center">

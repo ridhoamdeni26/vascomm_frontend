@@ -9,8 +9,8 @@
             <div class="w-auto">
                 <div class="flex items-center space-x-4">
                     <div class="text-left">
-                        <h3 class="text-md font-bold">Halo Admin</h3>
-                        <p class="text-gray-600">RIDHO</p>
+                        <h3 class="text-md font-bold">Halo {{ session('user.role') }}</h3>
+                        <p class="text-gray-600">{{ session('user.username') }}</p>
                     </div>
                     <div class="dropdown dropdown-end z-10">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -25,8 +25,8 @@
                                         <!-- Card Profil -->
                                         <div class="flex flex-col items-center">
                                             <img src="https://i.pravatar.cc/300" alt="Profile Pic" class="w-20 h-20 rounded-full mb-2">
-                                            <p class="text-center text-sm font-semibold">Nama Pengguna</p>
-                                            <p class="text-center text-xs text-gray-500">email@example.com</p>
+                                            <p class="text-center text-sm font-semibold">{{ session('user.username') }}</p>
+                                            <p class="text-center text-xs text-gray-500">{{ session('user.email') }}</p>
                                         </div>
                                     </a>
                                 </span>

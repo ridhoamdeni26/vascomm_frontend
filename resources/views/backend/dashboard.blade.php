@@ -10,22 +10,22 @@
         <!-- Card 1 -->
         <div class="card z-0 bg-white p-6 shadow-lg bg-gradient-to-r from-blue-300 to-blue-200">
             <p class="text-left text-md text-[#597393]">Jumlah User</p>
-            <p class="text-left text-xl text-[#002060]">Total: 150 User</p>
+            <p class="text-left text-xl text-[#002060]">Total: {{ $total_user }} User</p>
         </div>
         <!-- Card 2 -->
         <div class="card z-0 bg-white p-6 shadow-lg bg-gradient-to-r from-blue-300 to-blue-200">
             <p class="text-left text-md text-[#597393]">Jumlah User Active</p>
-            <p class="text-left text-xl text-[#002060]">Total: 150 User</p>
+            <p class="text-left text-xl text-[#002060]">Total: {{ $total_user_active }} User</p>
         </div>
         <!-- Card 3 -->
         <div class="card z-0 bg-white p-6 shadow-lg bg-gradient-to-r from-blue-300 to-blue-200">
             <p class="text-left text-md text-[#597393]">Jumlah Produk</p>
-            <p class="text-left text-xl text-[#002060]">Total: 150 Produk</p>
+            <p class="text-left text-xl text-[#002060]">Total: {{ $total_product }} Produk</p>
         </div>
         <!-- Card 4 -->
         <div class="card z-0 bg-white p-6 shadow-lg bg-gradient-to-r from-blue-300 to-blue-200">
             <p class="text-left text-md text-[#597393]">Jumlah Produk Active</p>
-            <p class="text-left text-xl text-[#002060]">Total: 150 Produk</p>
+            <p class="text-left text-xl text-[#002060]">Total: {{ $total_product_active }} Produk</p>
         </div>
     </div>
 
@@ -42,33 +42,16 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Baris 1 -->
+                @foreach ($data_product_active as $product)
                 <tr>
                     <td class="py-4 px-4 flex items-center border-t-0">
                         <img src="assets/imgs/laptop.png" alt="Product Icon" class="w-8 h-8 mr-2">
-                        Produk A
+                        {{ $product['name'] }}
                     </td>
-                    <td class="py-4 px-4 border-t-0">2024-01-23</td>
-                    <td class="py-4 px-4 border-t-0">Rp 100,000</td>
+                    <td class="py-4 px-4 border-t-0">{{ \Carbon\Carbon::parse($product['created_at'])->format('d M Y') }}</td>
+                    <td class="py-4 px-4 border-t-0">{{ $product['name'] }}</td>
                 </tr>
-                <!-- Baris 2 -->
-                <tr>
-                    <td class="py-4 px-4 flex items-center border-t-0">
-                        <img src="assets/imgs/laptop.png" alt="Product Icon" class="w-8 h-8 mr-2">
-                        Produk B
-                    </td>
-                    <td class="py-4 px-4 border-t-0">2024-01-24</td>
-                    <td class="py-4 px-4 border-t-0">Rp 150,000</td>
-                </tr>
-                <!-- Baris 3 -->
-                <tr>
-                    <td class="py-4 px-4 flex items-center border-t-0">
-                        <img src="assets/imgs/laptop.png" alt="Product Icon" class="w-8 h-8 mr-2">
-                        Produk C
-                    </td>
-                    <td class="py-4 px-4 border-t-0">2024-01-25</td>
-                    <td class="py-4 px-4 border-t-0">Rp 120,000</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
